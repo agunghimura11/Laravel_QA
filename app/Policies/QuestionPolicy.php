@@ -17,7 +17,7 @@ class QuestionPolicy
      * @param  \App\Question_model  $questionModel
      * @return mixed
      */
-    public function update(User $user, Question_model $questionModel)
+    public function update(User $user, Question_model $question)
     {
         return $user->id === $question->user_id;
     }
@@ -31,7 +31,7 @@ class QuestionPolicy
      */
     public function delete(User $user, Question_model $question)
     {
-        return $user->id === $question->user_id && $question->asnwers < 1;
+        return $user->id === $question->user_id && $question->asnwers_count < 1;
     }
 
     /**

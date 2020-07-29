@@ -15,11 +15,12 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('question_id');
+            $table->unsignedInteger('question_model_id');
             $table->unsignedInteger('user_id');
             $table->text('body');
-            $table->integer('votes_count')->default(0);
+            $table->integer('votes_count')->default(0); 
             $table->timestamps();
+            //$table->foreign('question_model_id')->references('id')->on('question_models');
         });
     }
 

@@ -31,17 +31,19 @@
                                     <h3 class="mt-0"><a href="{{ $question->url }}">{{ $question->title }}</a></h3>
                                     <div class="ml-auto">
                                         {{-- @if(Auth::user()->can('update', $question)) --}}
-                                        @can ('update', $question)
-                                        <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-sm btn-outline-info">Edit</a>
-                                        @endcan
+                                        {{-- @can ('update', $question) --}}
+                                            <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-sm btn-outline-info">Edit</a>
+                                        {{-- @endcan --}}
                                         {{-- @endif --}}
-                                        @can('delete', $question)
-                                        <form class="form-delete" method="post" action="{{ route('questions.destroy', $question) }}">
-                                        @method('DELETE')
-                                        @csrf
-                                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('are u sure?')">Delete</button>
-                                        </form>
-                                        @endcan
+                                        {{-- @if(Auth::user()->can('update', $question)) --}}
+                                        {{-- @can('delete', $question) --}}
+                                            <form class="form-delete" method="post" action="{{ route('questions.destroy', $question) }}">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('are u sure?')">Delete</button>
+                                            </form>
+                                        {{-- @endcan --}}
+                                        {{-- @endif --}}
                                     </div>
                                 </div>
                                 
